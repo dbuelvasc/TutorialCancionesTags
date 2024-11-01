@@ -29,9 +29,9 @@ jobs:
       run: python -m unittest discover -s tests
     - name: Correr pruebas con cobertura
       run: |
-        coverage run -m unittest discover -s tests
-        coverage report
-        coverage xml -i
+        python -m coverage run -m unittest discover -s tests
+        python -m coverage report
+        python -m coverage xml -i
     - name: Subir reporte de cobertura
       uses: actions/upload-artifact@v3
       with:
