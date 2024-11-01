@@ -40,7 +40,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.python.coverage.reportPaths=reports/*
+            -Dsonar.python.coverage.reportPaths=coverage.xml
 
       - name: listar archivos
         run: ls -la
