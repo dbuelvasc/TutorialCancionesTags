@@ -32,13 +32,7 @@ jobs:
           mkdir -p coverage-reports
           python -m coverage run -m unittest discover tests
           python -m coverage report
-          python -m coverage xml -o coverage-reports/coverage.xml
-          
-      - name: Subir reporte de cobertura
-        uses: actions/upload-artifact@v3
-        with:
-          name: cobertura
-          path: coverage-reports/*
+          python -m coverage xml -o coverage.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -47,4 +41,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.python.coverage.reportPaths=coverage-reports/coverage.xml
+            -Dsonar.python.coverage.reportPaths=coverage.xml
