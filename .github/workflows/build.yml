@@ -29,15 +29,15 @@ jobs:
       - name: Ejecutar pruebas y generar cobertura
         id: pruebas
         run: | 
-          # Crear la carpeta coverage-reports si no existe
           mkdir -p coverage-reports
-          
-          # Ejecutar las pruebas con cobertura
           python -m coverage run -m unittest discover tests
-          
-          # Generar el archivo coverage.xml en la carpeta coverage-reports
           python -m coverage xml -o coverage-reports/coverage.xml
           
+      - name: Subir reporte de cobertura
+        uses: actions/upload-artifact@v3
+        with:
+          name: cobertura
+          path: coverage/*
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
