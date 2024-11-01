@@ -44,8 +44,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: List coverage reports
-        run: |
-          ls -ltr coverage-reports   
-          cat coverage-reports/coverage.xml
+        with:
+          args: >
+            -Dsonar.python.coverage.reportPaths=coverage.xml
