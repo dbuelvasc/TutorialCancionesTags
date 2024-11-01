@@ -24,9 +24,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install coverage
-    - name: Correr pruebas
-      id: correr-pruebas
-      run: python -m unittest discover -s tests
+    #- name: Correr pruebas
+    #  id: correr-pruebas
+    #  run: python -m unittest discover -s tests
     - name: Correr pruebas con cobertura
       run: |
         python -m coverage run -m unittest discover -s tests
@@ -37,15 +37,6 @@ jobs:
       with:
         name: cobertura
         path: coverage/coverage.xml
-    #- name: pruebas+coverage
-    #  id: pruebas
-    #  run: |
-    #    python -m coverage run -m unittest discover tests
-    #    python -m coverage xml -i
-  #sonarcloud:
-  #  name: SonarCloud
-  #  runs-on: ubuntu-latest
-  #  steps:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
