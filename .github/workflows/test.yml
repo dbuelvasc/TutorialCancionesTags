@@ -35,7 +35,7 @@ jobs:
     - name: Subir reporte de cobertura
       uses: actions/upload-artifact@v3
       with:
-        name: coverage-report
+        name: coverage
         path: coverage.xml
     #- name: pruebas+coverage
     #  id: pruebas
