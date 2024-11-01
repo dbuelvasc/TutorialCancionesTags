@@ -41,3 +41,6 @@ jobs:
         with:
           args: >
             -Dsonar.python.coverage.reportPaths=reports/*
+
+      - name: listar archivos
+        run: ls -la
