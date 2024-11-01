@@ -26,11 +26,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: pruebas+coverage
+      - name: Ejecutar pruebas y generar cobertura
         id: pruebas
         run: | 
-          python -m coverage run -m unittest discover tests 
+          # Crear la carpeta coverage-reports si no existe
+          mkdir -p coverage-reports
+          
+          # Ejecutar las pruebas con cobertura
+          python -m coverage run -m unittest discover tests
+          
+          # Generar el archivo coverage.xml en la carpeta coverage-reports
           python -m coverage xml -o coverage-reports/coverage.xml
+          
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
