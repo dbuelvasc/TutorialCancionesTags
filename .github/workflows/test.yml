@@ -33,7 +33,7 @@ jobs:
         coverage report
         coverage xml
     - name: Subir reporte de cobertura
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: cobertura
         path: coverage.xml
