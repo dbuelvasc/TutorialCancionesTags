@@ -39,7 +39,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: List coverage reports
-        run: ls -R coverage-reports
-
-    
-  
+        run: |
+          ls -ltr coverage-reports   
+          cat coverage-reports/coverage.xml
