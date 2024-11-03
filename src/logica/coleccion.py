@@ -8,6 +8,7 @@ class Coleccion():
 
     def __init__(self):
         Base.metadata.create_all(engine)
+        self.database_password = "P@ssw0rd123"
 
     def agregar_album(self, titulo, anio, descripcion, medio):
         busqueda = session.query(Album).filter(Album.titulo == titulo).all()
@@ -242,10 +243,10 @@ class Coleccion():
             Interprete.nombre.ilike('%{0}%'.format(interprete_nombre))).all()]
         return interpretes
     
-    def buscar_album_vulnerable(self, user_input):
-        result = session.execute("SELECT * FROM album WHERE titulo = '" + user_input + "'")
-        return result.fetchall()
-
+    def connect_with_hardcoded_password(self):
+        print(f"Connecting to the database with password: {self.database_password}")
+        return True
+    
     def vulnerable_method(self):
         album = None
         return album.titulo 
