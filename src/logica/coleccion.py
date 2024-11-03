@@ -243,8 +243,7 @@ class Coleccion():
         return interpretes
     
     def buscar_album_vulnerable(self, user_input):
-        query = f"SELECT * FROM album WHERE titulo = '{user_input}'"
-        result = session.execute(text(query))
+        result = session.execute("SELECT * FROM album WHERE titulo = '" + user_input + "'")
         return result.fetchall()
 
     def vulnerable_method(self):
