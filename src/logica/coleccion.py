@@ -56,7 +56,8 @@ class Coleccion():
             session.delete(album)
             session.commit()
             return True
-        except:
+        except Exception as e:
+            print(f"Error al eliminar la canción: {e}")
             return False
     """
     #-----------------------
