@@ -18,6 +18,17 @@ class Coleccion():
             return True
         else:
             return False
+    #-----------------------
+    def agregar_album_segundavez(self, titulo, anio, descripcion, medio):
+        busqueda = session.query(Album).filter(Album.titulo == titulo).all()
+        if len(busqueda) == 0:
+            album = Album(titulo=titulo, ano=anio, descripcion=descripcion, medio=medio)
+            session.add(album)
+            session.commit()
+            return True
+        else:
+            return False
+    #-----------------------
 
     def dar_medios(self):
         return [medio.name for medio in Medio]
@@ -43,6 +54,16 @@ class Coleccion():
             return True
         except:
             return False
+    #-----------------------
+    def eliminar_album_segundavez(self, album_id):
+        try:
+            album = session.query(Album).filter(Album.id == album_id).first()
+            session.delete(album)
+            session.commit()
+            return True
+        except:
+            return False
+    #-----------------------
 
     def dar_albumes(self):
         albumes = [elem.__dict__ for elem in session.query(Album).all()]
