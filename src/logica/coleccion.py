@@ -57,7 +57,7 @@ class Coleccion():
             session.commit()
             return True
         except Exception as e:
-            print(f"Error al eliminar la canción: {e}")
+            print(f"Error al eliminar album: {e}")
             return False
     """
     #-----------------------
@@ -164,8 +164,9 @@ class Coleccion():
                 return True
             else:
                 return False
-        except:
-            return False
+        except Exception as e:
+                print(f"Error al eliminar la canción: {e}")
+                return False
 
     def dar_canciones(self):
         canciones = [elem.__dict__ for elem in session.query(Cancion).all()]
@@ -236,7 +237,8 @@ class Coleccion():
             session.delete(interprete)
             session.commit()
             return True
-        except:
+        except Exception as e:
+            print(f"Error al eliminar interprete: {e}")
             return False
 
     def dar_interpretes(self):
