@@ -214,12 +214,3 @@ class Coleccion():
         interpretes = [elem.__dict__ for elem in session.query(Interprete).filter(
             Interprete.nombre.ilike('%{0}%'.format(interprete_nombre))).all()]
         return interpretes
-    
-    def buscar_album_vulnerable(self, user_input):
-        query = f"SELECT * FROM album WHERE titulo = '{user_input}'"
-        result = session.execute(text(query))
-        return result.fetchall()
-
-    def vulnerable_method(self):
-        album = None
-        return album.titulo 
